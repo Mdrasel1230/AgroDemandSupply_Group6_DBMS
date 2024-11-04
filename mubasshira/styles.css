@@ -44,3 +44,35 @@ input{
           background-color: #ddd;
       }
 
+
+/* 
+      footer */
+
+      h5 {
+          font-size: 1rem;
+          line-height: 1.375;
+        font-family: Rubik,Arial,sans-serif;
+          font-weight: 500;
+          color: #979cb5;
+      }
+      
+      a {
+        color: #d1d4e4;
+        font-weight: 500;
+        text-decoration: none;
+        background-color: transparent;
+      }
+      
+      a:hover {
+        color: #007bff;
+        text-decoration: none;
+      }
+      
+      footer {
+        background: #132a39;
+        font-family: Rubik,Arial,sans-serif;
+        font-weight: 400;
+        font-size: 1rem;
+        overflow-x: hidden;
+        color: #cbd2db;
+      }
