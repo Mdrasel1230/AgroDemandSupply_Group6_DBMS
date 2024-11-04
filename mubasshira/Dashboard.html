@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demand and supply analysis of Agricultural product</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+    
+<div style="display:none" id="mySidebar">
+    <button class="sidebar-item -large"
+    onclick="sidebarclose()">Close &times;</button>
+    <a href="#" class="sidebar-item ">Market Price Analysis</a>
+    <a href="#" class="sidebar-item ">Demand and Supply Analysis</a>
+    <a href="#" class="sidebar-item ">Consumer Demand Insights</a>
+  </div>
+  
+  
+  <div id="page">
+    <button id="openNav" onclick="sidebaropen()">&#9776;</button>
+    Mubasshira
+  </div>
+  
+
+  
+
+    <script>
+        function sidebaropen() {
+          document.getElementById("page").style.marginLeft = "25%";
+          document.getElementById("mySidebar").style.width = "25%";
+          document.getElementById("mySidebar").style.display = "block";
+          document.getElementById("openNav").style.display = 'none';
+        }
+        function sidebarclose() {
+          document.getElementById("page").style.marginLeft = "0%";
+          document.getElementById("mySidebar").style.display = "none";
+          document.getElementById("openNav").style.display = "inline-block";
+        }
+        </script>
+</body>
+</html>
