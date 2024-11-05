@@ -15,26 +15,86 @@
 <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
         <button id="openNav" onclick="sidebaropen()" class="btn btn-outline-secondary">&#9776;</button>
-        <a class="navbar-brand">Agricultural Product</a>
+        <a class="navbar-brand">Agricultural Product Analysis Group</a>
 
         <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </form>   
     </div>
 </nav>
 
+<div class="card">
+    <div class="card mb-3">
+        <img src="https://media.mehrnews.com/d/2019/10/22/4/3274521.jpg" class="object-fit-md-contain border rounded" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Demand and Supply Analysis of Agricultural Product</h5>
+          <p class="card-text">The main goal of this database management project is to help farmers, distributors, and policymakers understand demand and supply trends for agricultural products. 
+            This will enable them to make informed and data-driven decisions. </p>
+          <p class="card-text"><small class="text-body-secondary">Datas are still being collected.</small></p>
+        </div>
+  </div>
+
 <!-- Sidebar -->
 <div class="sidebar" id="mySidebar" style="display:none;">
-    <button class="sidebar-item" onclick="sidebarclose()">Close &times;</button>
+    <button class="sidebar-item" onclick="sidebarclose()"> HOME &times;</button>
+
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        View Market Price Data
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Market Prices For Agricultural Product</a></li>
+          <li><a class="dropdown-item" href="#">Historical Market Price</a></li>
+          <li><a class="dropdown-item" href="#">Current Market Price</a></li>
+        </ul>
+      </div>
+
     <a href="#" class="sidebar-item">Market Price Analysis</a>
     <a href="#" class="sidebar-item">Demand and Supply Analysis</a>
     <a href="#" class="sidebar-item">Consumer Demand Insights</a>
+    <a href="#" class="sidebar-item">Price comparison by product/Region</a>
+    <a href="#" class="sidebar-item">Market Demand and Price Fluctuation</a>
+    <a href="#" class="sidebar-item">Factors affecting Market Price</a>
+
 </div>
+  
 
 <div id="page">
     Mubasshira Siddiqua
     <p> Market Analyst </p>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Agricultural Products</th>
+            <th scope="col">Available in Markets</th>
+            <th scope="col">Customer Demands</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Cucumber</td>
+            <td>Krishi Market</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Carrots</td>
+            <td>Kawran Bazaar</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Tomatoes</td>
+            <td>High</td>
+          </tr>
+        </tbody>
+      </table>
+
+
     <footer>
         <div class="container pt-5 border-top">
           <div class="row">
