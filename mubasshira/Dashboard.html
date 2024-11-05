@@ -15,7 +15,7 @@
 <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
         <button id="openNav" onclick="sidebaropen()" class="btn btn-outline-secondary">&#9776;</button>
-        <a class="navbar-brand">Agricultural Product Analysis Group</a>
+        <a class="navbar-brand">Demand and Supply Analysis of Agricultural Products</a>
 
         <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -39,23 +39,18 @@
 <div class="sidebar" id="mySidebar" style="display:none;">
     <button class="sidebar-item" onclick="sidebarclose()"> HOME &times;</button>
 
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        View Market Price Data
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Market Prices For Agricultural Product</a></li>
-          <li><a class="dropdown-item" href="#">Historical Market Price</a></li>
-          <li><a class="dropdown-item" href="#">Current Market Price</a></li>
-        </ul>
-      </div>
+
 
     <a href="#" class="sidebar-item">Market Price Analysis</a>
+    <a href="#" class="sidebar-item">Trend Analysis</a>
     <a href="#" class="sidebar-item">Demand and Supply Analysis</a>
     <a href="#" class="sidebar-item">Consumer Demand Insights</a>
     <a href="#" class="sidebar-item">Price comparison by product/Region</a>
     <a href="#" class="sidebar-item">Market Demand and Price Fluctuation</a>
     <a href="#" class="sidebar-item">Factors affecting Market Price</a>
+    <a href="#" class="sidebar-item">Settings</a>
+    <a href="#" class="sidebar-item">Help</a>
+    <a href="#" class="sidebar-item">Sign Out</a>
 
 </div>
   
@@ -64,35 +59,39 @@
     Mubasshira Siddiqua
     <p> Market Analyst </p>
 
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Agricultural Products</th>
-            <th scope="col">Available in Markets</th>
-            <th scope="col">Customer Demands</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Cucumber</td>
-            <td>Krishi Market</td>
-            <td>High</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Carrots</td>
-            <td>Kawran Bazaar</td>
-            <td>High</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Tomatoes</td>
-            <td>High</td>
-          </tr>
-        </tbody>
-      </table>
+<div class="container text-center">
+  <p> Market Price Analysis Overview </p>
+  <div class="row row-cols-2">
+    <div class="col"> Real-Time Market Price Tracker </div>
+    
+    <figure class="figure1">
+      <img src="https://today.thefinancialexpress.com.bd/uploads/1728583923.jpg" class="figure-img img-fluid rounded" alt="...">
+      <figcaption class="figure-caption">Market Price of Vegetables in Dhaka.</figcaption>
+    </figure>
+
+    <div class="col"> Trend Comparison Graphs </div>
+
+    <figure class="figure2">
+      <img src="https://www.tbsnews.net/sites/default/files/styles/infograph/public/images/2021/11/21/infograph_agri_and_processed_food_page1_jump2-01.jpg" class="figure-img img-fluid rounded" alt="...">
+      <figcaption class="figure-caption">Some recent datas collected from The Buisiness Standard.</figcaption>
+    </figure>
+
+    <div class="col"> Factors Affecting Market Prices </div>
+
+    <figure class="figure3">
+      <img src="https://www.tbsnews.net/sites/default/files/styles/very_big_3/public/images/2023/07/31/2-bangladeshs-agro-product-exports.jpg" class="figure-img img-fluid rounded" alt="...">
+      <figcaption class="figure-caption">Some recent datas collected from The Buisiness Standard.</figcaption>
+    </figure>
+
+    <div class="col"> Export rate of agricultural products </div>
+
+    <figure class="figure4">
+      <img src="https://gfmdhaka.com/public/images/news/20230607153619-photo-1200X470.jpg" class="figure-img img-fluid rounded" alt="...">
+      <figcaption class="figure-caption">A caption for the above image.</figcaption>
+    </figure>
+
+  </div>
+</div>
 
 
     <footer>
@@ -144,8 +143,8 @@
           <div class="row mt-4">
             <div class="col-md-12 text-center">
               <div class="d-flex justify-content-center align-items-center py-4">
-                <a class="mr-4" href="../privacy.html">Privacy & Terms</a>
-                <a href="../sitemap.xml">Sitemap</a>
+                <a class="mr-4" href="../privacy.html"> Privacy & Terms </a>
+                <a href="../sitemap.xml"> Sitemap </a>
               </div>
             </div>
           </div>
