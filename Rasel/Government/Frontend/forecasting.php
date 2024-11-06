@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CRUD Operations</title>
+    <title>Forecasting</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <style>
-/* Inline CSS to apply the background image to the entire body */
 body {
     background-image: url('css/bg_picture.jpg');  /* Adjust the path if needed */
     background-size: cover;
@@ -18,8 +17,6 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-
-
 
 nav ul {
     list-style-type: none;
@@ -48,23 +45,16 @@ nav ul li a:hover {
 }
 </style>
     <header>
-        <h1>CRUD Operations</h1>
+        <h1>Forecasting</h1>
     </header>
-        <div id="navbar-placeholder"></div>
-    <section>
-        <button onclick="createData()">Create</button>
-        <button onclick="readData()">Read</button>
-        <button onclick="updateData()">Update</button>
-        <button onclick="deleteData()">Delete</button>
-    </section>
-    <script>
-        // Load the navigation bar dynamically
-        fetch('navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar-placeholder').innerHTML = data;
-            });
-    </script>
+    
+    <?php include 'navbar.html'; ?>
+
+    <main>
+        <section>
+            <h2>Forecasting</h2>
+            <p>Analyze past data to predict future trends and demands in the agriculture sector.</p>
+        </section>
+    </main>
 </body>
-<script src="js/script.js"></script>
 </html>

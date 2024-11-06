@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Field Agent Dashboard</title>
+    <title>Demand Analysis</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -48,17 +48,16 @@ nav ul li a:hover {
 }
 </style>
     <header>
-        <h1>Field Agent Dashboard</h1>
+        <h1>Demand Analysis</h1>
     </header>
-    <nav>
-        <ul>
-            <li><a href="product_info.html">Product Information</a></li>
-            <li><a href="inventory.html">Inventory</a></li>
-            <li><a href="historical_data.html">Historical Data</a></li>
-            <li><a href="add_production.html">Add Production Data</a></li>
-            <li><a href="crud_operations.html">CRUD Operations</a></li>
-        </ul>
-    </nav>
-    <center><h1> Welcome, Mr Salman Hossain </h1></center>
+    
+    <?php include 'navbar.html'; ?>
+
+    <main>
+        <section>
+            <h2>Demand Analysis</h2>
+            <p>Analyze consumer demand for various products over time.</p>
+        </section>
+    </main>
 </body>
 </html>

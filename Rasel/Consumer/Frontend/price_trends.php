@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Product Information</title>
+    <title>Price Trends</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <style>
-/* Inline CSS to apply the background image to the entire body */
 body {
     background-image: url('css/bg_picture.jpg');  /* Adjust the path if needed */
     background-size: cover;
@@ -18,8 +17,6 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-
-
 
 nav ul {
     list-style-type: none;
@@ -48,24 +45,16 @@ nav ul li a:hover {
 }
 </style>
     <header>
-        <h1>Product Information</h1>
+        <h1>Price Trends</h1>
     </header>
     
-    <!-- Placeholder for Navigation Bar -->
-    <div id="navbar-placeholder"></div>
+    <?php include 'navbar.html'; ?>
 
-    <section>
-        <h2>Details</h2>
-        <p>Information about crop types, seasonality, and varieties.</p>
-    </section>
-
-    <script>
-        // Load the navigation bar dynamically
-        fetch('navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar-placeholder').innerHTML = data;
-            });
-    </script>
+    <main>
+        <section>
+            <h2>Price Trends</h2>
+            <p>Check price trends for agricultural products over time.</p>
+        </section>
+    </main>
 </body>
 </html>

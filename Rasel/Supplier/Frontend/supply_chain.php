@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Production Data</title>
+    <title>Supply Chain</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <style>
-/* Inline CSS to apply the background image to the entire body */
 body {
     background-image: url('css/bg_picture.jpg');  /* Adjust the path if needed */
     background-size: cover;
@@ -18,8 +17,6 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-
-
 
 nav ul {
     list-style-type: none;
@@ -48,27 +45,16 @@ nav ul li a:hover {
 }
 </style>
     <header>
-        <h1>Add Production Data</h1>
+        <h1>Supply Chain</h1>
     </header>
     
-    <!-- Placeholder for Navigation Bar -->
-    <div id="navbar-placeholder"></div>
-    <section>
-        <form>
-            <label for="cropType">Crop Type:</label>
-            <input type="text" id="cropType" name="cropType">
-            <label for="yield">Yield:</label>
-            <input type="number" id="yield" name="yield">
-            <button type="submit">Add Data</button>
-        </form>
-    </section>
-    <script>
-        // Load the navigation bar dynamically
-        fetch('navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar-placeholder').innerHTML = data;
-            });
-    </script>
+    <?php include 'navbar.html'; ?>
+
+    <main>
+        <section>
+            <h2>Supply Chain</h2>
+            <p>Oversee and manage supply chain operations for effective product distribution.</p>
+        </section>
+    </main>
 </body>
 </html>

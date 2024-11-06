@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Historical Data</title>
+    <title>Market Regulation</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <style>
-/* Inline CSS to apply the background image to the entire body */
 body {
     background-image: url('css/bg_picture.jpg');  /* Adjust the path if needed */
     background-size: cover;
@@ -18,8 +17,6 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-
-
 
 nav ul {
     list-style-type: none;
@@ -48,22 +45,16 @@ nav ul li a:hover {
 }
 </style>
     <header>
-        <h1>Historical Data</h1>
+        <h1>Market Regulation</h1>
     </header>
     
-    <!-- Placeholder for Navigation Bar -->
-    <div id="navbar-placeholder"></div>
-    <section>
-        <h2>Production Data</h2>
-        <p>View historical production data, including yields and acreage.</p>
-    </section>
-    <script>
-        // Load the navigation bar dynamically
-        fetch('navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar-placeholder').innerHTML = data;
-            });
-    </script>
+    <?php include 'navbar.html'; ?>
+
+    <main>
+        <section>
+            <h2>Market Regulation</h2>
+            <p>View and manage market regulations to ensure fair practices in agriculture markets.</p>
+        </section>
+    </main>
 </body>
 </html>

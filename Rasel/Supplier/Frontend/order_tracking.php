@@ -2,13 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Inventory</title>
+    <title>Order Tracking</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/bg.css">
 </head>
 <body>
 <style>
-/* Inline CSS to apply the background image to the entire body */
 body {
     background-image: url('css/bg_picture.jpg');  /* Adjust the path if needed */
     background-size: cover;
@@ -19,8 +17,6 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-
-
 
 nav ul {
     list-style-type: none;
@@ -48,24 +44,17 @@ nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }
 </style>
-<header>
-        <h1>Inventory</h1>
+    <header>
+        <h1>Order Tracking</h1>
     </header>
     
-    <!-- Placeholder for Navigation Bar -->
-    <div id="navbar-placeholder"></div>
-    <section>
-        <h2>Storage Levels</h2>
-        <p>Check available storage and inventory levels.</p>
-    </section>
+    <?php include 'navbar.html'; ?>
 
-    <script>
-        // Load the navigation bar dynamically
-        fetch('navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar-placeholder').innerHTML = data;
-            });
-    </script>
+    <main>
+        <section>
+            <h2>Order Tracking</h2>
+            <p>Track orders to ensure timely and accurate deliveries to customers.</p>
+        </section>
+    </main>
 </body>
 </html>
