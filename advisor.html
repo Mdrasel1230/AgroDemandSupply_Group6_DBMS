@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultural Advisor Dashboard</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f4f7fa;
+        }
+
+        /* Horizontal navbar styling */
+        .navbar {
+            display: flex;
+            width: 100%;
+            background-color: #2d3436;
+            color: white;
+            padding: 1rem;
+            justify-content: space-around;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar h2 {
+            margin-right: auto;
+            padding-left: 1rem;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #3e4447;
+            border-radius: 4px;
+        }
+
+        /* Main content area */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            overflow-y: auto;
+        }
+
+        /* Dashboard Sections */
+        .section {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        /* Dashboard Stats */
+        .stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            flex: 1;
+            background-color: #4caf50;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* Data Analysis Section */
+        .data-analysis {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .data-card {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Advice Form Section */
+        .advice-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .advice-form input, .advice-form textarea, .advice-form button {
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        .advice-form button {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        .advice-form button:hover {
+            background-color: #45a049;
+        }
+
+        /* Recent Suggestions Section */
+        .recent-suggestions {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .recent-suggestions h3 {
+            margin-bottom: 1rem;
+        }
+
+        .suggestion-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 900px) {
+            .data-analysis {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Horizontal Navbar -->
+    <div class="navbar">
+        <h2>Agricultural Advisor Dashboard</h2>
+        <a href="#">Overview</a>
+        <a href="#">Data Analysis</a>
+        <a href="#">Suggestions</a>
+        <a href="#">Reports</a>
+        <a href="#">Settings</a>
+        <a href="#">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Advisor Overview Section -->
+        <div class="section">
+            <h2>Advisor Overview</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <h3>Total Analysis Insights</h3>
+                    <p>15 Insights</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Suggestions Submitted</h3>
+                    <p>8</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Pending Advice</h3>
+                    <p>3</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Analysis Section -->
+        <div class="section data-analysis">
+            <h2>Data Analysis</h2>
+
+            <div class="data-card">
+                <h3>Weather Analysis</h3>
+                <p>Average Rainfall: 150mm</p>
+                <p>Temperature Trend: +2°C in the past month</p>
+            </div>
+
+            <div class="data-card">
+                <h3>Crop Production Trends</h3>
+                <p>Wheat production has increased by 10% in the last quarter.</p>
+                <p>Rice demand is expected to rise by 5% next year.</p>
+            </div>
+
+            <div class="data-card">
+                <h3>Market Demand Insights</h3>
+                <p>The demand for organic products has increased by 15% in the last month.</p>
+            </div>
+        </div>
+
+        <!-- Advice Form Section -->
+        <div class="section advice-form">
+            <h2>Submit Your Advice</h2>
+            <input type="text" placeholder="Subject of Advice" />
+            <textarea rows="5" placeholder="Write your advice here..."></textarea>
+            <button type="submit">Submit Advice</button>
+        </div>
+
+        <!-- Recent Suggestions Section -->
+        <div class="section recent-suggestions">
+            <h3>Recent Suggestions</h3>
+            <div class="suggestion-item">
+                <div>Suggestion #001: Increase wheat production due to rising demand</div>
+                <div>Submitted: 2 days ago</div>
+            </div>
+            <div class="suggestion-item">
+                <div>Suggestion #002: Introduce drought-resistant crops for upcoming season</div>
+                <div>Submitted: 5 days ago</div>
+            </div>
+            <div class="suggestion-item">
+                <div>Suggestion #003: Invest in organic farming methods to cater to market trends</div>
+                <div>Submitted: 1 week ago</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
