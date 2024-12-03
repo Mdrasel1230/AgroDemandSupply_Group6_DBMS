@@ -1,0 +1,66 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.navbar-brand img {
+  height: 40px;
+}
+
+.carousel-item img {
+  height: 400px;
+  object-fit: cover;
+}
+
+.list-group-item a {
+  text-decoration: none;
+  color: black;
+}
+
+.list-group-item a:hover {
+  text-decoration: underline;
+}
+
+.card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #ddd;
+}
+
+/* Adding margin fixes */
+.upper-section {
+  margin-bottom: 20px; /* Adjust the space below the upper section */
+}
+
+.lower-section {
+  margin-top: 0px; /* Remove top margin to avoid large space */
+  padding-top: 20px; /* Optional: Add padding for spacing */
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 18px;
+  }
+
+  .carousel-item img {
+    height: 250px;
+  }
+
+  .card img {
+    height: 150px;
+  }
+
+  footer {
+    font-size: 14px;
+  }
+
+  /* Mobile Margin Adjustments */
+  .upper-section, .lower-section {
+    margin-bottom: 10px; /* Reduce margin for mobile screens */
+  }
+}

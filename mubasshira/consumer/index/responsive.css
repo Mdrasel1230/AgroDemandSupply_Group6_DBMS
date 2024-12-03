@@ -1,0 +1,19 @@
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .navbar-brand {
+      font-size: 18px;
+    }
+  
+    .carousel-item img {
+      height: 250px;
+    }
+  
+    .card img {
+      height: 150px;
+    }
+  
+    footer {
+      font-size: 14px;
+    }
+  }
+
