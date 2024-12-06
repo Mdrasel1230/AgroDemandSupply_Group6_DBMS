@@ -3,95 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warehouse Dashboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
-
-        header {
-            background-color: #00ff80;
-            color: white;
-            padding: 1rem 2rem;
-            text-align: center;
-        }
-
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            padding: 2rem;
-        }
-
-        .card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            flex: 1 1 calc(33.333% - 2rem);
-            margin: 1rem;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .card h2 {
-            font-size: 1.5rem;
-            margin: 0 0 1rem;
-            color: #333;
-        }
-
-        .card p {
-            font-size: 1rem;
-            color: #666;
-        }
-
-        footer {
-            background-color: #00ff80;
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .card {
-                flex: 1 1 100%;
-            }
-        }
-    </style>
+    <title>Warehouse Manager Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
 <header>
-    <h1>Warehouse Dashboard</h1>
+    <h1>Warehouse Manager Dashboard</h1>
 </header>
 
 <div class="container">
-    <div class="card">
+    <div class="card" onclick="openInventory()">
         <h2>Inventory</h2>
         <p>View and manage stock levels.</p>
     </div>
-    <div class="card">
+    <div class="card" onclick="openOrders()">
         <h2>Orders</h2>
         <p>Track incoming and outgoing orders.</p>
     </div>
-    <div class="card">
-        <h2>Reports</h2>
-        <p>Analyze performance metrics.</p>
-    </div>
-    <div class="card">
+    <div class="card" onclick="openSuppliers()">
         <h2>Suppliers</h2>
         <p>Manage supplier details.</p>
     </div>
-    <div class="card">
+    <div class="card" onclick="openEmployees()">
         <h2>Employees</h2>
         <p>Track staff and assignments.</p>
     </div>
-    <div class="card">
-        <h2>Settings</h2>
-        <p>Configure system preferences.</p>
+    
+</div>
+
+<!-- Inventory Modal -->
+<div id="inventoryModal" class="modal">
+    <div class="modal-content">
+        <h2>Stock Levels</h2>
+        <canvas id="stockChart" width="400" height="200"></canvas>
+        <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<!-- Orders Modal -->
+<div id="ordersModal" class="modal">
+    <div class="modal-content">
+        <h2>Incoming and Outgoing Orders</h2>
+        <table id="ordersTable">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Incoming</th>
+                    <th>Outgoing</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be dynamically populated -->
+            </tbody>
+        </table>
+        <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<!-- Suppliers Modal -->
+<div id="suppliersModal" class="modal">
+    <div class="modal-content">
+        <h2>Supplier Details</h2>
+        <table id="suppliersTable">
+            <thead>
+                <tr>
+                    <th>Supplier Name</th>
+                    <th>Supplier ID</th>
+                    <th>Quantity Supplied</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be dynamically populated -->
+            </tbody>
+        </table>
+        <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<!-- Employees Modal -->
+<div id="employeesModal" class="modal">
+    <div class="modal-content">
+        <h2>Staff and Assignments</h2>
+        <canvas id="employeeChart" width="400" height="200"></canvas>
+        <button class="close-btn" onclick="closeModal()">Close</button>
     </div>
 </div>
 
@@ -99,5 +95,6 @@
     <p>&copy; 2024 Warehouse Management. All rights reserved.</p>
 </footer>
 
+<script src="scripts.js"></script>
 </body>
 </html>
