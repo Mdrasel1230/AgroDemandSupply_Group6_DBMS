@@ -1,6 +1,6 @@
 -- Database creation
-CREATE DATABASE IF NOT EXISTS AgricultureDB;
-USE AgricultureDB;
+CREATE DATABASE IF NOT EXISTS agriculture_db;
+USE agriculture_db;
 
 -- WAREHOUSE table
 CREATE TABLE WAREHOUSE (
