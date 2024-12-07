@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retailer Dashboard</title>
+    <link rel="stylesheet" href="retailer.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Retailer Dashboard</h2>
+            <nav>
+                <ul>
+                    <li><a href="#">Overview</a></li>
+                    <li><a href="#">Sales</a></li>
+                    <li><a href="#">Inventory</a></li>
+                    <li><a href="#">Users</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1>Welcome, User</h1>
+                <input type="text" placeholder="Search...">
+            </header>
+            <section class="overview">
+                <div class="card">
+                    <h3>Total Sales</h3>
+                    <p>$12,345</p>
+                </div>
+                <div class="card">
+                    <h3>New Orders</h3>
+                    <p>125</p>
+                </div>
+                <div class="card">
+                    <h3>Products in Stock</h3>
+                    <p>1,234</p>
+                </div>
+                <div class="card">
+                    <h3>Customers</h3>
+                    <p>567</p>
+                </div>
+            </section>
+            <section class="details">
+                <h2>Recent Sales</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#12345</td>
+                            <td>John Doe</td>
+                            <td>Laptop</td>
+                            <td>$999</td>
+                        </tr>
+                        <tr>
+                            <td>#12346</td>
+                            <td>Jane Smith</td>
+                            <td>Smartphone</td>
+                            <td>$799</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
