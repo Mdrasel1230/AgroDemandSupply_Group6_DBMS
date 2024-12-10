@@ -1,100 +1,99 @@
-/* Resetting some defaults */
-body, h1, h2, h3, p, ul, li {
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    color: #333;
+    box-sizing: border-box;
 }
 
-body {
-    display: flex;
-    height: 100vh;
-}
-
-/* Sidebar styles */
-.sidebar {
-    width: 20%;
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    padding: 20px;
-}
-
-.sidebar h2 {
-    margin-bottom: 20px;
-}
-
-.sidebar ul {
-    list-style: none;
-}
-
-.sidebar ul li {
-    margin: 10px 0;
-}
-
-.sidebar ul li a {
-    text-decoration: none;
-    color: #ecf0f1;
-    font-size: 16px;
-    transition: color 0.3s;
-}
-
-.sidebar ul li a:hover {
-    color: #1abc9c;
-}
-
-/* Main content styles */
-.main-content {
-    width: 80%;
-    padding: 20px;
-    background-color: #ecf0f1;
-}
-
+/* Header */
 .header {
+    background: black;
+    color: white;
+    padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
 }
 
-.header input {
-    padding: 10px;
-    font-size: 14px;
-}
-
-.overview {
+.nav-links {
+    list-style: none;
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    gap: 1rem;
 }
 
-.card {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    width: 23%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Hero Section */
+.hero-section {
+    background: white;
+    color: black;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* About Section */
+.about-section {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Products Section */
+.product-section {
+    padding: 2rem;
     text-align: center;
 }
 
-.details {
-    background-color: #fff;
-    padding: 20px;
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.product-item {
+    padding: 1rem;
+    color: white;
+    text-align: center;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: black;
 }
 
-.details table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+/* Form */
+#product-form {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.details th, .details td {
-    text-align: left;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+#product-form input, #product-form button {
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
-.details th {
-    background-color: #f4f4f4;
+#product-form button {
+    background: black;
+    color: white;
+    cursor: pointer;
+}
+
+#product-form button:hover {
+    background: white;
+    color: black;
+}
+
+/* Footer */
+.footer {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 1rem;
 }

@@ -3,78 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retailer Dashboard</title>
+    <title>Farmer's Market Retailer</title>
     <link rel="stylesheet" href="retailer.css">
 </head>
 <body>
-    <div class="dashboard">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <h2>Retailer Dashboard</h2>
-            <nav>
-                <ul>
-                    <li><a href="#">Overview</a></li>
-                    <li><a href="#">Sales</a></li>
-                    <li><a href="#">Inventory</a></li>
-                    <li><a href="#">Users</a></li>
-                    <li><a href="#">Settings</a></li>
-                </ul>
-            </nav>
-        </aside>
+    <header class="header">
+        <h1>Farmer's Market</h1>
+        <nav class="nav">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <header class="header">
-                <h1>Welcome, User</h1>
-                <input type="text" placeholder="Search...">
-            </header>
-            <section class="overview">
-                <div class="card">
-                    <h3>Total Sales</h3>
-                    <p>$12,345</p>
-                </div>
-                <div class="card">
-                    <h3>New Orders</h3>
-                    <p>125</p>
-                </div>
-                <div class="card">
-                    <h3>Products in Stock</h3>
-                    <p>1,234</p>
-                </div>
-                <div class="card">
-                    <h3>Customers</h3>
-                    <p>567</p>
-                </div>
-            </section>
-            <section class="details">
-                <h2>Recent Sales</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Customer</th>
-                            <th>Product</th>
-                            <th>Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>#12345</td>
-                            <td>John Doe</td>
-                            <td>Laptop</td>
-                            <td>$999</td>
-                        </tr>
-                        <tr>
-                            <td>#12346</td>
-                            <td>Jane Smith</td>
-                            <td>Smartphone</td>
-                            <td>$799</td>
-                        </tr>
-                        <!-- Add more rows as needed -->
-                    </tbody>
-                </table>
-            </section>
-        </main>
-    </div>
+    <main class="main-content">
+        <section id="home" class="hero-section">
+            <h2>Welcome to the Farmer's Market</h2>
+            <p>Fresh produce, straight from the farm!</p>
+        </section>
+
+        <section id="about" class="about-section">
+            <h2>About Us</h2>
+            <p>We connect farmers with customers who value quality and sustainability.</p>
+        </section>
+
+        <section id="products" class="product-section">
+            <h2>Our Products</h2>
+            <div class="grid-container">
+                <div class="product-item">Fruits</div>
+                <div class="product-item">Vegetables</div>
+            </div>
+            <form id="product-form">
+                <label for="product-name">Product Name:</label>
+                <input type="text" id="product-name" placeholder="Enter product name" required>
+                <label for="product-color">Color:</label>
+                <input type="color" id="product-color" value="#000000">
+                <button type="submit">Add Product</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Farmer's Market</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
