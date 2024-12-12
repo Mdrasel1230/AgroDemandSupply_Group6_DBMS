@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "your_database_name"; // Update your database name here
+$dbname = "agro_dsap"; // Update your database name here
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
