@@ -139,7 +139,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="#"><i class="fas fa-seedling"></i> Agro Dashboard</a>
+      <a class="navbar-brand" href="#"><i class="fas fa-seedling"></i> For Better Agriculture </a>
       <button class="btn btn-primary" onclick="toggleCart()">View Cart</button>
     </div>
   </nav>
@@ -183,7 +183,7 @@
 
   <script>
     const products = [
-      { id: 1, category: 'Grains', name: 'Wheat', price: 50, unit: 'kg', image: 'https://as2.ftcdn.net/v2/jpg/06/39/92/49/1000_F_639924962_NstXVrDvOHmfM42mSHoydSp0v1Ac1uF9.jpg', description: 'High-quality wheat for your daily needs.', rating: 4.5 },
+      { id: 1, category: 'Grains', name: 'Wheat', price: 50, unit: 'kg', image: 'https://www.realsimple.com/thmb/P9xeLZLcOPKOi5EQSHGa-VhOlB0=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/is-wheat-bread-healthy-GettyImages-1488687097-b92bc2286fe7401e8e40602b627525b8.jpg', description: 'High-quality wheat for your daily needs.', rating: 4.5 },
       { id: 2, category: 'Grains', name: 'Rice', price: 60, unit: 'kg', image: 'https://cdn.prod.website-files.com/66e9e86e939e026869639119/66fc4e47b5d69fb0deb88654_iStock-153737841-scaled.jpeg', description: 'Premium rice for cooking every meal.', rating: 4.7 },
       { id: 3, category: 'Fruits', name: 'Apple', price: 100, unit: 'kg', image: 'https://images.everydayhealth.com/images/diet-nutrition/apples-101-about-1440x810.jpg?sfvrsn=f86f2644_5', description: 'Fresh, sweet apples harvested at peak ripeness.', rating: 4.8 },
       { id: 4, category: 'Fruits', name: 'Banana', price: 40, unit: 'dozen', image: 'https://www.chandigarhayurvedcentre.com/wp-content/uploads/2024/04/img_193775_bananas.jpg', description: 'Healthy, ripe bananas packed with nutrients.', rating: 4.3 },
