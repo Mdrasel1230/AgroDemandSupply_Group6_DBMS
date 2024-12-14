@@ -1,6 +1,6 @@
 <?php
 // Database connection //
-$conn = new mysqli("localhost", "root", "", "agro_dsap");
+$conn = new mysqli("localhost", "root", "", "agriculture_dsap");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="d-flex align-items-center">
             <span class="me-3">Hello, Mubasshiraaa</span>
             <a class="nav-link me-2" href="feedback.php">Feedback</a>
-            <a class="nav-link" href="index.php">Logout</a>
+            <a class="nav-link" href="product-details.php">Logout</a>
         </div>
     </div>
   </nav>

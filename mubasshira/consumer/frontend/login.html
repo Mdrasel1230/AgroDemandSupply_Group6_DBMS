@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+        }
+
+        /* Container styling */
+        .login-container {
+            background: white;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Header styling */
+        .login-container h2 {
+            margin-bottom: 1.5rem;
+            font-size: 24px;
+            color: #333;
+        }
+
+        /* Input fields */
+        .login-container input[type="text"],
+        .login-container input[type="password"],
+        .login-container select {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        /* Button styling */
+        .login-container button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-container button:hover {
+            background-color: #45a049;
+        }
+
+        /* Link styling */
+        .login-container .signup-link {
+            margin-top: 1rem;
+            display: block;
+            color: #666;
+            text-decoration: none;
+        }
+
+        .login-container .signup-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 400px) {
+            .login-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form>
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+
+            <!-- Grouped Combobox for Roles -->
+            <select required>
+                <option value="" disabled selected>Select your role</option>
+                <optgroup label="Roles">
+                    <option value="supplier">Supplier</option>
+                    <option value="merchant">Merchant</option>
+                    <option value="merchant">consumer</option>
+                    <option value="agricultural_cooperative">Agricultural Cooperative</option>
+                </optgroup>
+            </select>
+
+            <button type="submit">Login</button>
+            <a href="#" class="signup-link">Don't have an account? Sign up</a>
+        </form>
+    </div>
+
+</body>
+</html>
+
