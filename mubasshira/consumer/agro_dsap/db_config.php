@@ -2,7 +2,7 @@
 $host = 'localhost';
 $user = 'root';
 $password = '';
-$dbname = 'dsaap';
+$dbname = 'agrculture_dsap';
 
 $conn = new mysqli($host, $user, $password, $dbname);
 

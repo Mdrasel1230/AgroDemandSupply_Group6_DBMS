@@ -139,7 +139,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="#"><i class="fas fa-seedling"></i> Agro Dashboard</a>
+      <a class="navbar-brand" href="#"><i class="fas fa-seedling"></i> For Better Agriculture </a>
       <button class="btn btn-primary" onclick="toggleCart()">View Cart</button>
     </div>
   </nav>

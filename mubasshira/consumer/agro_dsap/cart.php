@@ -1,3 +1,19 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $cart = json_decode(file_get_contents('php://input'), true);
+    $total = 0;
+
+    echo "<h1>Cart Summary</h1>";
+    echo "<ul>";
+    foreach ($cart as $item) {
+        echo "<li>{$item['name']} - \${$item['price']}</li>";
+        $total += $item['price'];
+    }
+    echo "</ul>";
+    echo "<h3>Total: \$$total</h3>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +59,7 @@
           <h4 class="card-title">Order ID: <span id="orderId"></span></h4>
           <h5 class="card-subtitle mb-2 text-muted">Order Details:</h5>
           <ul id="orderItems" class="list-group"></ul>
-          <h5 class="mt-3">Total: Tk. <span id="totalPrice"></span></h5>
+          <h5 class="mt-3">Total: ৳<span id="totalPrice"></span></h5>
           <button class="btn btn-primary mt-3" onclick="downloadInvoice()">Download Invoice (PDF)</button>
         </div>
       </div>
