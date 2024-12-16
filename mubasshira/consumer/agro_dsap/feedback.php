@@ -17,7 +17,7 @@ $result = $conn->query($sql);
 </head>
 <body>
     <div class="container mt-4">
-        <h1 class="text-center">Reports</h1>
+        <h1 class="text-center">Feedback</h1>
         <table class="table mt-4">
             <thead>
                 <tr>
