@@ -99,9 +99,10 @@ VALUES
 
 
 -- Insert sample user data
-INSERT INTO users (username, email, password, role) VALUES
-('admin', 'admin@agro.com', 'admin', 'admin'),
-('rahim', 'rahim@agro.com', '123', 'supplier');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`, `created_at`) VALUES
+(1,	'admin',	'admin@agro.com',	'$2y$10$Z4ABhsLM4Mz3pcIXXDXEOuojSDorA4hWQq0Rg.Bt.Gs3zmRDlkaLy',	'admin',	'2024-11-30 19:27:52'),
+(2,	'test',	'test@gmail.com',	'$2y$10$akv2rYaQO6A5sunLInoWAOJ8XjebbKoqv9mY0HcKa/5wWYiVFBstK',	'admin',	'2024-12-13 20:30:39'),
+(3,	'test2',	'sgs@gsgs.s',	'$2y$10$2.tttmNg5MHEh4OKjZtge.3v0YluazGefxKAln1Pc0pdoGOPmi4Du',	'supplier',	'2024-12-15 21:36:11');
 
 
 INSERT INTO DEMAND_ANALYSIS (productID, consumptionPattern, priceElasticity)
