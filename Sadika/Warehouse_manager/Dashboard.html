@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Manager Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>Warehouse Manager Dashboard</h1>
+</header>
+
+<div class="container">
+    <div class="card" onclick="openInventory()">
+        <h2>Inventory</h2>
+        <p>View and manage stock levels.</p>
+    </div>
+    <div class="card" onclick="openOrders()">
+        <h2>Orders</h2>
+        <p>Track incoming and outgoing orders.</p>
+    </div>
+    <div class="card" onclick="openSuppliers()">
+        <h2>Suppliers</h2>
+        <p>Manage supplier details.</p>
+    </div>
+    <div class="card" onclick="openEmployees()">
+        <h2>Employees</h2>
+        <p>Track staff and assignments.</p>
+    </div>
+    
+</div>
+
+<!-- Inventory Modal -->
+<div id="inventoryModal" class="modal">
+    <div class="modal-content">
+        <h2>Stock Levels</h2>
+        <canvas id="stockChart" width="400" height="200"></canvas>
+        <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<!-- Orders Modal -->
+<div id="ordersModal" class="modal">
+    <div class="modal-content">
+        <h2>Incoming and Outgoing Orders</h2>
+        <table id="ordersTable">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Incoming</th>
+                    <th>Outgoing</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be dynamically populated -->
+            </tbody>
+        </table>
+        <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<!-- Suppliers Modal -->
+<div id="suppliersModal" class="modal">
+    <div class="modal-content">
+        <h2>Supplier Details</h2>
+        <table id="suppliersTable">
+            <thead>
+                <tr>
+                    <th>Supplier Name</th>
+                    <th>Supplier ID</th>
+                    <th>Quantity Supplied</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be dynamically populated -->
+            </tbody>
+        </table>
+        <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<!-- Employees Modal -->
+<div id="employeesModal" class="modal">
+    <div class="modal-content">
+        <h2>Staff and Assignments</h2>
+        <canvas id="employeeChart" width="400" height="200"></canvas>
+        <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Warehouse Management. All rights reserved.</p>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>
