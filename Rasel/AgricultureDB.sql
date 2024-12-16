@@ -120,30 +120,20 @@ CREATE TABLE SUPPLY_FORECAST_DATA (
     FOREIGN KEY (productID) REFERENCES PRODUCT(productID) ON DELETE CASCADE
 );
 
--- Insert sample user data
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`, `created_at`) VALUES
-(1,	'admin',	'admin@agro.com',	'$2y$10$Z4ABhsLM4Mz3pcIXXDXEOuojSDorA4hWQq0Rg.Bt.Gs3zmRDlkaLy',	'admin',	'2024-11-30 19:27:52'),
-(2,	'test',	'test@gmail.com',	'$2y$10$akv2rYaQO6A5sunLInoWAOJ8XjebbKoqv9mY0HcKa/5wWYiVFBstK',	'admin',	'2024-12-13 20:30:39'),
-(3,	'test2',	'sgs@gsgs.s',	'$2y$10$2.tttmNg5MHEh4OKjZtge.3v0YluazGefxKAln1Pc0pdoGOPmi4Du',	'supplier',	'2024-12-15 21:36:11');
+-- Create the `users` table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('admin', 'supplier', 'consumer', 'warehouse', 'retailer') NOT NULL DEFAULT 'consumer',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
-
-INSERT INTO DEMAND_ANALYSIS (productID, consumptionPattern, priceElasticity)
-VALUES
-(1, 'Steady increase in demand during the winter season.', 0.8),
-(2, 'Demand fluctuates based on festival seasons.', 1.2),
-(3, 'High demand during summer months.', 0.5),
-(4, 'Demand remains consistent throughout the year.', 0.3),
-(5, 'Sudden spike in demand due to recent market trends.', 1.5);
-
-
-INSERT INTO ANALYTICS_DATA (year, productID, quantitySupplied, quantityDemanded, region)
-VALUES
-(2024, 1, 1000.00, 1200.00, 'Dhaka'),
-(2024, 1, 800.00, 900.00, 'Chattogram'),
-(2024, 2, 500.00, 600.00, 'Sylhet'),
-(2024, 3, 200.00, 250.00, 'Khulna'),
-(2024, 4, 1500.00, 1300.00, 'Barishal'),
-(2024, 5, 1000.00, 1100.00, 'Rajshahi'),
-(2023, 1, 950.00, 1000.00, 'Dhaka'),
-(2023, 2, 450.00, 500.00, 'Sylhet'),
-(2023, 3, 180.00, 200.00, 'Khulna');
+CREATE TABLE market_prices (
+    priceID INT AUTO_INCREMENT PRIMARY KEY,
+    productID INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    date DATE NOT NULL,
+    FOREIGN KEY (productID) REFERENCES PRODUCT(productID) ON DELETE CASCADE
+);
