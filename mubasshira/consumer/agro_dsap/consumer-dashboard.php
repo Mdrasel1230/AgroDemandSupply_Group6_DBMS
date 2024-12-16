@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="d-flex align-items-center">
             <span class="me-3">Hello, Mubasshiraaa</span>
             <a class="nav-link me-2" href="feedback.php">Feedback</a>
-            <a class="nav-link" href="product-details.php">Logout</a>
+            <a class="nav-link" href="logout.php">Logout</a>
         </div>
     </div>
   </nav>
