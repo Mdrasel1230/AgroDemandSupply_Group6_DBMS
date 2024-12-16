@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        h1 {
+    text-align: center;  /* Centers the text horizontally */
+    margin-top: 50px; }
+        .key-metrics {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .metric-button {
+            flex: 1;
+            padding: 15px;
+            background-color: #4CAF50;
+            text-align: center;
+            margin-right: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .metric-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Graph container styles for layout */
+        .graph-container {
+            margin-top: 20px;
+            text-align: center; /* Center-align the title and chart */
+            width: 30%; /* Adjust the width of the graph containers */
+            display: inline-block;
+            box-sizing: border-box;
+            margin-right: 4%; /* Add some space between graphs */
+        }
+
+        .graph-container:nth-child(3n) {
+            margin-right: 0; /* Remove right margin on the last graph */
+        }
+
+        canvas {
+            width: 100%; /* Ensure canvas width is responsive */
+            height: 300px; /* Set a fixed height for the canvas */
+        }
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Supplier Dashboard</h1>
+</header>
+<nav>
+    <ul>
+        <li><a href="products.php">Products</a></li>
+        <li><a href="warehouse.php">Warehouse</a></li>
+        <li><a href="supplier_information.html">Supplier Information</a></li>
+        <li><a href="order_management.php">Order Management</a></li>
+        <li><a href="inventory_tracking.html">Inventory Tracking</a></li>
+        <li><a href="notification.php">Notifications</a></li>
+        <li><a href="analytics_reports.php">Analytics Reports</a></li>
+        <li><a href="logout.php">Logout</a></li>
+    </ul>
+</nav>
+    <main>
+        <section>
+            
+            <!-- Key Metrics as Buttons -->
+            <div class="key-metrics">
+                <button class="metric-button" id="total-products-button" onclick="updateData()">
+                    <h3>Total Products</h3>
+                    <p id="total-products">Loading...</p>
+                </button>
+                <button class="metric-button" id="completed-orders-button" onclick="updateData()">
+                    <h3>Completed Orders</h3>
+                    <p id="completed-orders">Loading...</p>
+                </button>
+                <button class="metric-button" id="pending-orders-button" onclick="updateData()">
+                    <h3>Pending Orders</h3>
+                    <p id="pending-orders">Loading...</p>
+                </button>
+                <button class="metric-button" id="order-status-button" onclick="updateData()">
+                    <h3>Order Status</h3>
+                    <p id="order-status">Loading...</p>
+                </button>
+            </div>
+
+            <!-- Graph Containers -->
+            <div class="graph-container">
+                <h2>Total Product Count</h2>
+                <canvas id="product-count-chart"></canvas>
+            </div>
+
+            <div class="graph-container">
+                <h2>stock-availability</h2>
+                <canvas id="stock-availability-chart" width="200" height="200"></canvas>
+            </div>
+
+            <div class="graph-container">
+                <h2>demand-supply-chart</h2>
+
+
+                <canvas id="demand-supply-chart" width="200" height="200"></canvas>
+            </div>
+
+            <div class="graph-container">
+                <h2>Order Status Overview</h2>
+                <canvas id="order-status-chart"></canvas>
+            </div>
+
+            <div class="graph-container">
+                <h2>Sales Trends</h2>
+                <canvas id="sales-trends-chart" width="200" height="200"></canvas>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Update the data using localStorage
+        function updateData() {
+            // Simulate inserting new data from a user or form
+            const totalProducts = prompt("Enter Total Products", 120);
+            const completedOrders = prompt("Enter Completed Orders", 80);
+            const pendingOrders = prompt("Enter Pending Orders", 60);
+            const orderStatus = prompt("Enter Order Status", 95);
+
+            // Save the updated data to localStorage
+            localStorage.setItem('totalProducts', totalProducts);
+            localStorage.setItem('completedOrders', completedOrders);
+            localStorage.setItem('pendingOrders', pendingOrders);
+            localStorage.setItem('orderStatus', orderStatus);
+
+            // Update the displayed data
+            document.getElementById('total-products').innerText = totalProducts;
+            document.getElementById('completed-orders').innerText = completedOrders;
+            document.getElementById('pending-orders').innerText = pendingOrders;
+            document.getElementById('order-status').innerText = orderStatus;
+        }
+
+        // On page load, get data from localStorage if available
+        window.onload = function() {
+            const totalProducts = localStorage.getItem('totalProducts') || 0;
+            const completedOrders = localStorage.getItem('completedOrders') || 0;
+            const pendingOrders = localStorage.getItem('pendingOrders') || 0;
+            const orderStatus = localStorage.getItem('orderStatus') || 0;
+
+            document.getElementById('total-products').innerText = totalProducts;
+            document.getElementById('completed-orders').innerText = completedOrders;
+            document.getElementById('pending-orders').innerText = pendingOrders;
+            document.getElementById('order-status').innerText = orderStatus;
+
+            initializeCharts(); // Initialize charts after loading the data
+        }
+
+        // Initialize Charts
+        function initializeCharts() {
+            new Chart(document.getElementById('product-count-chart'), {
+                type: 'pie',
+                data: {
+                    labels: ['Product A', 'Product B', 'Product C'],
+                    datasets: [{
+                        label: 'Product Count',
+                        data: [25, 30, 45],
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                    }],
+                },
+            });
+
+            new Chart(document.getElementById('stock-availability-chart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Product A', 'Product B', 'Product C'],
+                    datasets: [{
+                        label: 'Stock Availability in Warehouse A',
+                        data: [100, 200, 150],
+                        backgroundColor: '#4CAF50',
+                    }, {
+                        label: 'Stock Availability in Warehouse B',
+                        data: [120, 180, 130],
+                        backgroundColor: '#FFC107',
+                    }],
+                },
+            });
+
+            new Chart(document.getElementById('demand-supply-chart'), {
+                type: 'line',
+                data: {
+                    labels: ['January', 'February', 'March', 'April'],
+                    datasets: [{
+                        label: 'Demand for Product A',
+                        data: [20, 50, 30, 40],
+                        borderColor: '#FF5733',
+                        fill: false,
+                        borderWidth: 2
+                    }, {
+                        label: 'Supply of Product A',
+                        data: [15, 40, 35, 30],
+                        borderColor: '#4CAF50',
+                        fill: false,
+                        borderWidth: 2
+                    }],
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('order-status-chart'), {
+                type: 'pie',
+                data: {
+                    labels: ['Pending Orders', 'Shipped Orders', 'Completed Orders'],
+                    datasets: [{
+                        label: 'Order Status',
+                        data: [40, 30, 30],
+                        backgroundColor: ['#FF0000', '#FFFF00', '#008000'],
+                    }],
+                },
+            });
+
+            new Chart(document.getElementById('sales-trends-chart'), {
+                type: 'line',
+                data: {
+                    labels: ['January', 'February', 'March', 'April'],
+                    datasets: [{
+                        label: 'Sales of Product A',
+                        data: [500, 1000, 1500, 2000],
+                        borderColor: '#2196F3',
+                        fill: false,
+                        borderWidth: 2
+                    }],
+                },
+            });
+        }
+    </script>
+</body>
+</html>
