@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Supplier Information</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/common.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            height: 200vh;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 1200px;
+            margin: 50px 0;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .form-container form {
+            flex: 1;
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .form-container form h4 {
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            width: 40%;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 55%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .submit-button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        .submit-button-container button {
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button-container button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table th,
+        table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #394857;
+            color: white;
+        }
+
+        table tr:hover {
+            background-color: #f4f4f4;
+        }
+
+        .action-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .action-btn:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+    <section>
+        <h1>Supplier Information</h1><br><br>
+        <nav>
+            <ul>
+                <li><a href="products.php">Products</a></li>
+                <li><a href="warehouse.php">Warehouse</a></li>
+                <li><a href="supplier_information.html">Supplier Information</a></li>
+                <li><a href="order_management.php">Order Management</a></li>
+                <li><a href="inventory_tracking.php">Inventory Tracking</a></li>
+                <li><a href="notification.php">Notifications</a></li>
+                <li><a href="analytics_reports.php">Analytics Reports</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
+        <br><br>
+        <div class="left-section">
+            <div class="header">
+                <div class="form-container">
+                    <form id="supplierForm">
+                        <label for="supplier_name">Supplier Name:</label>
+                        <select id="supplier_name" name="supplier_name">
+                            <option value="" disabled selected>Select Supplier Name</option>
+                            <option value="Supplier A">Supplier A</option>
+                            <option value="Supplier B">Supplier B</option>
+                            <option value="Supplier C">Supplier C</option>
+                            <option value="Supplier D">Supplier D</option>
+                        </select><br><br>
+                    
+                        <label for="contact_info">Contact Info:</label>
+                        <input type="text" id="contact_info" name="contact_info" placeholder="Enter Contact Info"><br><br>
+                    
+                        <label for="region_supplied">Region Supplied:</label>
+                        <select id="region_supplied" name="region_supplied">
+                            <option value="" disabled selected>Select Region Supplied</option>
+                            <option value="North">North</option>
+                            <option value="South">South</option>
+                            <option value="East">East</option>
+                            <option value="West">West</option>
+                        </select><br><br>
+                    </form>
+
+                    <form id="productForm">
+                        <h4>Product Information</h4>
+                        <label for="product_name">Product Name:</label>
+                        <select id="product_name" name="product_name">
+                            <option value="" disabled selected>Select Product Name</option>
+                            <option value="Rice">Rice</option>
+                            <option value="Wheat">Wheat</option>
+                            <option value="Potato">Potato</option>
+                            <option value="Tomato">Tomato</option>
+                        </select><br><br>
+                
+                        <label for="product_type">Product Type:</label>
+                        <select id="product_type" name="product_type">
+                            <option value="" disabled selected>Select Product type</option>
+                            <option value="Grain">Grain</option>
+                            <option value="Vegetable">Vegetable</option>
+                        </select><br><br>
+                
+                        <label for="product_variety">Product Variety:</label>
+                        <select id="product_variety" name="product_variety">
+                            <option value="" disabled selected>Select Product Variety</option>
+                            <option value="Basmati">Basmati</option>
+                            <option value="Durum">Durum</option>
+                            <option value="Desiree">Desiree</option>
+                            <option value="Roma">Roma</option>
+                        </select><br><br>
+                
+                        <label for="seasonality">Seasonality:</label>
+                        <select id="seasonality" name="seasonality">
+                            <option value="" disabled selected>Select Seasonality</option>
+                            <option value="Kharif">Kharif</option>
+                            <option value="Rabi">Rabi</option>
+                            <option value="Zaid">Zaid</option>
+                        </select><br><br>
+                    </form>
+
+                    <form id="warehouseForm">
+                        <h4>Warehouse Information</h4>
+                        <label for="warehouse_location">Warehouse Location:</label>
+                        <select id="warehouse_location" name="warehouse_location">
+                            <option value="" disabled selected>Select Warehouse Location</option>
+                            <option value="Dhaka">Dhaka</option>
+                            <option value="Chittagong">Chittagong</option>
+                            <option value="Sylhet">Sylhet</option>
+                            <option value="Khulna">Khulna</option>
+                        </select><br><br>
+                
+                        <label for="warehouse_zone">Warehouse Zone:</label>
+                        <select id="warehouse_zone" name="warehouse_zone">
+                            <option value="" disabled selected>Select Warehouse Zone</option>
+                            <option value="North">North</option>
+                            <option value="South">South</option>
+                            <option value="East">East</option>
+                            <option value="West">West</option>
+                        </select><br><br>
+                
+                        <label for="warehouse_capacity">Warehouse Capacity:</label>
+                        <input type="number" id="warehouse_capacity" name="warehouse_capacity" placeholder="Enter Warehouse Capacity"><br><br>
+                
+                        <label for="unit_cost">Unit Cost:</label>
+                        <input type="number" id="unit_cost" name="unit_cost" placeholder="Enter Unit Cost"><br><br>
+                
+                        <label for="transport_details">Transport Details:</label>
+                        <select id="transport_details" name="transport_details">
+                            <option value="" disabled selected>Select Transport Details </option>
+                            <option value="Truck 1">Truck 1</option>
+                            <option value="Truck 2">Truck 2</option>
+                            <option value="Truck 3">Truck 3</option>
+                            <option value="Truck 4">Truck 4</option>
+                        </select><br><br>
+                    </form>
+                </div>
+                <br><br>
+                <div class="submit-button-container">
+                    <button onclick="submitData()">Submit All Information</button>
+                </div>
+
+                <br><br>
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>S. ID</th>
+                            <th>S. Name</th>
+                            <th>S. Info</th>
+                            <th>Region Supplied</th>
+                            <th>Contact Info</th>
+                            <th>P. Name</th>
+                            <th>P. Type</th>
+                            <th>P. Variety</th>
+                            <th>Seasonality</th>
+                            <th>W. Location</th>
+                            <th>W. Zone</th>
+                            <th>W. Capacity</th>
+                            <th>Unit Cost</th>
+                            <th>Transport Details</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function submitData() {
+            const supplierName = document.getElementById("supplier_name").value;
+            const contactInfo = document.getElementById("contact_info").value;
+            const regionSupplied = document.getElementById("region_supplied").value;
+            const warehouseLocation = document.getElementById("warehouse_location").value;
+            const productName = document.getElementById("product_name").value;
+            const productType = document.getElementById("product_type").value;
+            const productVariety = document.getElementById("product_variety").value;
+            const seasonality = document.getElementById("seasonality").value;
+            const warehouseZone = document.getElementById("warehouse_zone").value;
+            const warehouseCapacity = document.getElementById("warehouse_capacity").value;
+            const unitCost = document.getElementById("unit_cost").value;
+            const transportDetails = document.getElementById("transport_details").value;
+
+            const tableBody = document.getElementById("data-table").getElementsByTagName("tbody")[0];
+
+            const newRow = tableBody.insertRow();
+            newRow.insertCell(0).textContent = tableBody.rows.length + 1;
+            newRow.insertCell(1).textContent = supplierName;
+            newRow.insertCell(2).textContent = contactInfo;
+            newRow.insertCell(3).textContent = regionSupplied;
+            newRow.insertCell(4).textContent = contactInfo;
+            newRow.insertCell(5).textContent = productName;
+            newRow.insertCell(6).textContent = productType;
+            newRow.insertCell(7).textContent = productVariety;
+            newRow.insertCell(8).textContent = seasonality;
+            newRow.insertCell(9).textContent = warehouseLocation;
+            newRow.insertCell(10).textContent = warehouseZone;
+            newRow.insertCell(11).textContent = warehouseCapacity;
+            newRow.insertCell(12).textContent = unitCost;
+            newRow.insertCell(13).textContent = transportDetails;
+            const actionCell = newRow.insertCell(14);
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.classList.add("action-btn");
+            deleteButton.onclick = function () {
+                tableBody.deleteRow(newRow.rowIndex - 1);
+            };
+            actionCell.appendChild(deleteButton);
+        }
+    </script>
+</body>
+</html>
