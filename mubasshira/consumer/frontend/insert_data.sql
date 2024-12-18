@@ -126,13 +126,16 @@ VALUES
 -- Insert data into ORDERS table
 INSERT INTO ORDERS (user_id, order_status, total_amount)
 VALUES
+(1, 'pending', 110.00);
+(2, 'pending', 120.00);
 (3, 'pending', 140.00);
 
 -- Insert data into ORDER_DETAILS table
 INSERT INTO ORDER_DETAILS (order_id, product_id, quantity, price)
 VALUES
-(1, 1, 2, 80.00),
-(1, 2, 5, 60.00);
+(3, 1, 2, 80.00),
+(4, 2, 5, 60.00);
+(5, 2, 5, 70.00);
 
 -- Insert data into WAREHOUSE_INVENTORY table
 INSERT INTO WAREHOUSE_INVENTORY (warehouse_id, product_id, stock)
@@ -149,4 +152,4 @@ VALUES
 -- Insert data into PAYMENTS table
 INSERT INTO PAYMENTS (order_id, payment_method, payment_status, amount)
 VALUES
-(1, 'Credit Card', 'success', 140.00);
+(3, 'Credit Card', 'success', 140.00);

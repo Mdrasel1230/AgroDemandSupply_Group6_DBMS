@@ -1,3 +1,83 @@
+<?php
+// Start session to manage cart data
+session_start();
+
+// Mock product data (in real-world scenarios, fetch from a database)
+$products = [
+    ["id" => 1, "category" => "Grains", "name" => "Wheat", "price" => 50, "unit" => "kg", "image" => "https://www.realsimple.com/thmb/P9xeLZLcOPKOi5EQSHGa-VhOlB0=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/is-wheat-bread-healthy-GettyImages-1488687097-b92bc2286fe7401e8e40602b627525b8.jpg", "description" => "High-quality wheat for your daily needs.", "rating" => 4.5],
+    ["id" => 2, "category" => "Grains", "name" => "Rice", "price" => 60, "unit" => "kg", "image" => "https://cdn.prod.website-files.com/66e9e86e939e026869639119/66fc4e47b5d69fb0deb88654_iStock-153737841-scaled.jpeg", "description" => "Premium rice for cooking every meal.", "rating" => 4.7],
+    ["id" => 3, "category" => "Fruits", "name" => "Apple", "price" => 100, "unit" => "kg", "image" => "https://images.everydayhealth.com/images/diet-nutrition/apples-101-about-1440x810.jpg?sfvrsn=f86f2644_5", "description" => "Fresh, sweet apples harvested at peak ripeness.", "rating" => 4.8],
+    ["id" => 4, "category" => "Fruits", "name" => "Banana", "price" => 40, "unit" => "dozen", "image" => "https://www.chandigarhayurvedcentre.com/wp-content/uploads/2024/04/img_193775_bananas.jpg", "description" => "Healthy, ripe bananas packed with nutrients.", "rating" => 4.3],
+    ["id" => 5, "category" => "Vegetables", "name" => "Carrot", "price" => 45, "unit" => "kg", "image" => "https://images.food52.com/bINxPtItEhhltoIaoTN3fbXsrAs=/1320x880/filters:format(webp)/51b308bf-5c78-4bc3-8c7a-57f49dbbc542--2017-1010_brazilian-carrot-cake-genius-recipes_julia-gartland-085.jpg", "description" => "Fresh carrots perfect for salads or cooking.", "rating" => 4.6],
+    ["id" => 6, "category" => "Vegetables", "name" => "Tomato", "price" => 70, "unit" => "kg", "image" => "https://as1.ftcdn.net/v2/jpg/03/13/56/38/1000_F_313563819_KB3fG1pZOz9QxiCgEpTrvhFfbB6vqyf1.jpg", "description" => "Organic tomatoes with a perfect balance of sweetness and tartness.", "rating" => 4.9]
+];
+
+// Handle cart actions
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = $_POST['action'];
+    
+    if ($action === 'addToCart') {
+        $productId = intval($_POST['productId']);
+        $quantity = floatval($_POST['quantity']);
+        
+        if ($quantity > 0) {
+            $product = array_filter($products, fn($p) => $p['id'] === $productId);
+            
+            if ($product) {
+                $product = array_values($product)[0];
+
+                // Add to cart
+                if (!isset($_SESSION['cart'])) {
+                    $_SESSION['cart'] = [];
+                }
+
+                $cart = &$_SESSION['cart'];
+
+                if (isset($cart[$productId])) {
+                    $cart[$productId]['quantity'] += $quantity;
+                } else {
+                    $cart[$productId] = [
+                        "id" => $productId,
+                        "name" => $product['name'],
+                        "price" => $product['price'],
+                        "unit" => $product['unit'],
+                        "quantity" => $quantity,
+                        "image" => $product['image']
+                    ];
+                }
+            }
+        }
+    } elseif ($action === 'clearCart') {
+        $_SESSION['cart'] = [];
+    } elseif ($action === 'confirmOrder') {
+        if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+            $order = [
+                "orderId" => time(),
+                "cart" => $_SESSION['cart'],
+                "total" => array_sum(array_map(fn($item) => $item['price'] * $item['quantity'], $_SESSION['cart'])),
+                "date" => date('Y-m-d H:i:s')
+            ];
+
+            // In real applications, save the order to the database
+
+            $_SESSION['cart'] = [];
+            echo json_encode(["success" => true, "orderId" => $order['orderId']]);
+            exit;
+        } else {
+            echo json_encode(["success" => false, "message" => "Cart is empty"]);
+            exit;
+        }
+    }
+}
+
+// Retrieve cart data for AJAX calls
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'getCart') {
+    echo json_encode(["cart" => $_SESSION['cart'] ?? []]);
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -183,7 +263,7 @@
 
   <script>
     const products = [
-      { id: 1, category: 'Grains', name: 'Wheat', price: 50, unit: 'kg', image: 'https://www.realsimple.com/thmb/P9xeLZLcOPKOi5EQSHGa-VhOlB0=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/is-wheat-bread-healthy-GettyImages-1488687097-b92bc2286fe7401e8e40602b627525b8.jpg', description: 'High-quality wheat for your daily needs.', rating: 4.5 },
+      { id: 1, category: 'Grains', name: 'Wheat', price: 50, unit: 'kg', image: 'https://as2.ftcdn.net/v2/jpg/06/39/92/49/1000_F_639924962_NstXVrDvOHmfM42mSHoydSp0v1Ac1uF9.jpg', description: 'High-quality wheat for your daily needs.', rating: 4.5 },
       { id: 2, category: 'Grains', name: 'Rice', price: 60, unit: 'kg', image: 'https://cdn.prod.website-files.com/66e9e86e939e026869639119/66fc4e47b5d69fb0deb88654_iStock-153737841-scaled.jpeg', description: 'Premium rice for cooking every meal.', rating: 4.7 },
       { id: 3, category: 'Fruits', name: 'Apple', price: 100, unit: 'kg', image: 'https://images.everydayhealth.com/images/diet-nutrition/apples-101-about-1440x810.jpg?sfvrsn=f86f2644_5', description: 'Fresh, sweet apples harvested at peak ripeness.', rating: 4.8 },
       { id: 4, category: 'Fruits', name: 'Banana', price: 40, unit: 'dozen', image: 'https://www.chandigarhayurvedcentre.com/wp-content/uploads/2024/04/img_193775_bananas.jpg', description: 'Healthy, ripe bananas packed with nutrients.', rating: 4.3 },
@@ -303,7 +383,7 @@
       localStorage.setItem('cart', JSON.stringify(cart));
 
       alert('Order confirmed successfully!');
-      window.location.href = 'cart.html';
+      window.location.href = 'cart.php';
     }
 
     function toggleCart() {

@@ -137,3 +137,99 @@ CREATE TABLE market_prices (
     date DATE NOT NULL,
     FOREIGN KEY (productID) REFERENCES PRODUCT(productID) ON DELETE CASCADE
 );
+
+
+-- CATEGORIES table
+CREATE TABLE CATEGORIES (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(191) NOT NULL UNIQUE,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- PRODUCTS table
+CREATE TABLE PRODUCTS (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(191) NOT NULL,
+    description TEXT,
+    price DECIMAL(10, 2) NOT NULL,
+    stock INT NOT NULL,
+    category_id INT NOT NULL,
+    supplier_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (category_id) REFERENCES CATEGORIES(id),
+    FOREIGN KEY (supplier_id) REFERENCES USERS(id)
+);
+
+-- CART table
+CREATE TABLE CART (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL DEFAULT 1,
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES USERS(id),
+    FOREIGN KEY (product_id) REFERENCES PRODUCTS(id)
+);
+
+-- ORDERS table
+CREATE TABLE ORDERS (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    order_status ENUM('pending', 'shipped', 'delivered', 'cancelled') DEFAULT 'pending',
+    total_amount DECIMAL(10, 2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES USERS(id)
+);
+
+-- ORDER_DETAILS table
+CREATE TABLE ORDER_DETAILS (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES ORDERS(id),
+    FOREIGN KEY (product_id) REFERENCES PRODUCTS(id)
+);
+
+-- WAREHOUSE_INVENTORY table
+CREATE TABLE WAREHOUSE_INVENTORY (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    warehouse_id INT NOT NULL,
+    product_id INT NOT NULL,
+    stock INT NOT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (warehouse_id) REFERENCES WAREHOUSE(warehouseID),
+    FOREIGN KEY (product_id) REFERENCES PRODUCT(productID)
+);
+
+-- REVIEWS table
+CREATE TABLE REVIEWS (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    user_id INT NOT NULL,
+    rating INT CHECK(rating BETWEEN 1 AND 5),
+    review TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (product_id) REFERENCES PRODUCTS(id),
+    FOREIGN KEY (user_id) REFERENCES USERS(id)
+);
+
+-- PAYMENTS table
+CREATE TABLE PAYMENTS (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    payment_method VARCHAR(191) NOT NULL,
+    payment_status ENUM('success', 'failed', 'pending') DEFAULT 'success',
+    amount DECIMAL(10, 2) NOT NULL,
+    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES ORDERS(id)
+);
+
+-- Indices for Optimization
+CREATE INDEX idx_products_category ON PRODUCTS(category_id);
+CREATE INDEX idx_cart_user ON CART(user_id);
+CREATE INDEX idx_orders_user ON ORDERS(user_id);
+CREATE INDEX idx_inventory_product ON WAREHOUSE_INVENTORY(product_id);
+

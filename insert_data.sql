@@ -126,3 +126,52 @@ VALUES
 (2023, 2, 450.00, 500.00, 'Sylhet'),
 (2023, 3, 180.00, 200.00, 'Khulna');
 
+
+INSERT INTO CATEGORIES (name, description)
+VALUES
+('Grains', 'Cereal crops like rice and wheat'),
+('Vegetables', 'Fresh vegetables including leafy greens'),
+('Fruits', 'Seasonal and tropical fruits');
+
+-- Insert data into PRODUCTS table
+INSERT INTO PRODUCTS (name, description, price, stock, category_id, supplier_id)
+VALUES
+('Basmati Rice', 'High-quality long-grain rice', 40.00, 1000, 1, 2),
+('Roma Tomato', 'Fresh Roma variety tomatoes', 20.00, 500, 2, 2);
+
+-- Insert data into CART table
+INSERT INTO CART (user_id, product_id, quantity)
+VALUES
+(3, 1, 2),
+(3, 2, 5);
+
+-- Insert data into ORDERS table
+INSERT INTO ORDERS (user_id, order_status, total_amount)
+VALUES
+(1, 'pending', 110.00);
+(2, 'pending', 120.00);
+(3, 'pending', 140.00);
+
+-- Insert data into ORDER_DETAILS table
+INSERT INTO ORDER_DETAILS (order_id, product_id, quantity, price)
+VALUES
+(3, 1, 2, 80.00),
+(4, 2, 5, 60.00);
+(5, 2, 5, 70.00);
+
+-- Insert data into WAREHOUSE_INVENTORY table
+INSERT INTO WAREHOUSE_INVENTORY (warehouse_id, product_id, stock)
+VALUES
+(1, 1, 500),
+(1, 2, 300);
+
+-- Insert data into REVIEWS table
+INSERT INTO REVIEWS (product_id, user_id, rating, review)
+VALUES
+(1, 3, 5, 'Excellent quality rice!'),
+(2, 3, 4, 'Fresh and good taste.');
+
+-- Insert data into PAYMENTS table
+INSERT INTO PAYMENTS (order_id, payment_method, payment_status, amount)
+VALUES
+(3, 'Credit Card', 'success', 140.00);
