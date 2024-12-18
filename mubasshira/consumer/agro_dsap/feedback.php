@@ -1,8 +1,8 @@
 <?php
 include('db_config.php');
 
-$sql = "SELECT productName, SUM(quantity) AS total_quantity FROM tbStorageSupply 
-        INNER JOIN tbProduct ON tbStorageSupply.productID = tbProduct.productID 
+$sql = "SELECT productName, SUM(quantity) AS total_quantity FROM Storage_Supply 
+        INNER JOIN Product ON Storage_Supply.productID = Product.productID 
         GROUP BY productName";
 $result = $conn->query($sql);
 ?>
