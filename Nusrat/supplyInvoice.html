@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Supplier Invoice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Generate Supplier Invoice</h2>
+        <form method="POST" action="supplier_invoice_handler.php">
+            <label>Product:</label>
+            <select name="productID">
+                <option value="1">Rice</option>
+                <option value="2">flour</option>
+                <option value="3">banana</option>
+                <option value="4">egg</option>
+                <option value="5">Daal</option>
+                <option value="6">apple</option>
+                <option value="7">Dragon fruit</option>
+                <option value="8">papaya</option>
+            </select>
+            <label>Quantity:</label>
+            <input type="number" name="quantity" placeholder="Enter quantity" required>
+            <label>Unit Price:</label>
+            <input type="number" step="0.01" name="unitPrice" placeholder="Enter unit price" required>
+            <button type="submit" class="button">Generate Invoice</button>
+        </form>
+        <a href="retailer_dashboard.html" class="button">Back to Dashboard</a>
+    </div>
+</body>
+</html>
