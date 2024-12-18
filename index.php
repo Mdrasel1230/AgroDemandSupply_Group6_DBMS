@@ -111,13 +111,13 @@
             if ($user['role'] === 'admin') {
                 header("Location: Rasel/Admin Dashboard/admin_dashboard.php");
             } elseif ($user['role'] === 'supplier') {
-                header("Location: supplier_dashboard.php");
+                header("Location: Marjana/Supplier/css/supplier_dashboard.html");
             } elseif ($user['role'] === 'consumer') {
                 header("Location: consumer_dashboard.php");
             } elseif ($user['role'] === 'warehouse') {
-                header("Location: warehouse_dashboard.php");
+                header("Location: Sadika/Dashboard.php");
             } elseif ($user['role'] === 'retailer') {
-                header("Location: retailer_dashboard.php");
+                header("Location: Nusrat/retailer_dashboard.html");
             }
             exit();
         } else {
