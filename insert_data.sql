@@ -102,7 +102,10 @@ VALUES
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`, `created_at`) VALUES
 (1,	'admin',	'admin@agro.com',	'$2y$10$Z4ABhsLM4Mz3pcIXXDXEOuojSDorA4hWQq0Rg.Bt.Gs3zmRDlkaLy',	'admin',	'2024-11-30 19:27:52'),
 (2,	'test',	'test@gmail.com',	'$2y$10$akv2rYaQO6A5sunLInoWAOJ8XjebbKoqv9mY0HcKa/5wWYiVFBstK',	'admin',	'2024-12-13 20:30:39'),
-(3,	'test2',	'sgs@gsgs.s',	'$2y$10$2.tttmNg5MHEh4OKjZtge.3v0YluazGefxKAln1Pc0pdoGOPmi4Du',	'supplier',	'2024-12-15 21:36:11');
+(3,	'warehouse',	'warehouse@hh.dd',	'$2y$10$vC6J4kDkHOBr0TNcj6u9VeecKFuGUWDrbOkkVzlm2Oq2lSrES.k3.',	'warehouse',	'2024-12-18 15:11:26'),
+(4,	'supplier',	'supplier@dd.dsd',	'$2y$10$tiKBhvcjrfWLGYNPs5Pn4u87dJjsr4xQQCbS.oPhY06HjcPTEWv4S',	'supplier',	'2024-12-18 15:14:36'),
+(5,	'consumer',	'consumer@tes.co',	'$2y$10$cLCPo2ByVLvfYzlsLDwmoOfBgGUV.60vnypUukcGWpZaixygqMBDm',	'consumer',	'2024-12-18 15:17:17'),
+(6,	'retailer',	'retailer@test.dd',	'$2y$10$xdJg2j3FCqUtD/woYW/X5ukU2aShlhevJqydrqtZn.3GLCe9rDYT.',	'retailer',	'2024-12-18 15:22:29');
 
 
 INSERT INTO DEMAND_ANALYSIS (productID, consumptionPattern, priceElasticity)
