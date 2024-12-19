@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        
+        .notification-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 90px;
+            margin: 0 auto;
+        }
+
+        .notification {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 16px;
+        }
+
+        .notification .message {
+            display: inline-block;
+            max-width: 80%;
+        }
+
+        .notification button {
+            padding: 5px 10px;
+            border: none;
+            background-color: transparent;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .notification button:hover {
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+
+        /* Styling for different notification types */
+        .supplier-low {
+            background-color: #ffeb3b;
+            border-left: 5px solid #ff9800;
+        }
+
+        .admin-error {
+            background-color: #f44336;
+            border-left: 5px solid #d32f2f;
+            color: white;
+        }
+
+        .warehouse-expiry {
+            background-color: #4caf50;
+            border-left: 5px solid #388e3c;
+            color: white;
+        }
+
+        .info {
+            background-color: #2196f3;
+            border-left: 5px solid #1976d2;
+            color: white;
+        }
+
+        .notification-time {
+            font-size: 12px;
+            color: #aaa;
+            margin-left: 15px;
+        }
+
+        .input-form {
+            margin-bottom: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 10px;
+           /* Subtle gray background */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-form input, .input-form button {
+            width: 80%;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 15px;
+        }
+
+        .input-form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .input-form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<h1>Notification</h1>
+
+<nav>
+    <ul>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="warehouse.html">Warehouse</a></li>
+        <li><a href="supplier_information.html">Supplier Information</a></li>
+        <li><a href="order_management.html">Order Management</a></li>
+        <li><a href="inventory_tracking.html">Inventory Tracking</a></li>
+        <li><a href="notifications.html">Notifications</a></li>
+        <li><a href="analytics_reports.html">Analytics Reports</a></li>
+        <li><a href="logout.html">Logout</a></li>
+    </ul>
+</nav>
+
+<main>
+    <div class="input-form">
+        <h2>Enter Notification Data</h2>
+        <input type="text" id="supplier-message" placeholder="Enter Supplier Notification Message" />
+        <input type="text" id="admin-message" placeholder="Enter Admin Notification Message" />
+        <input type="text" id="warehouse-message" placeholder="Enter Warehouse Notification Message" />
+        <input type="text" id="info-message" placeholder="Enter General Info Message" />
+        <input type="text" id="notification-time" placeholder="Enter Time (e.g., 10 minutes ago)" />
+        <button onclick="generateNotifications()">Generate Notifications</button>
+    </div>
+
+    <div class="notification-container" id="notification-container">
+        <!-- Notifications will be dynamically inserted here -->
+    </div>
+</main>
+
+<script>
+    function generateNotifications() {
+        const supplierMessage = document.getElementById("supplier-message").value;
+        const adminMessage = document.getElementById("admin-message").value;
+        const warehouseMessage = document.getElementById("warehouse-message").value;
+        const infoMessage = document.getElementById("info-message").value;
+        const notificationTime = document.getElementById("notification-time").value;
+
+        const notificationContainer = document.getElementById("notification-container");
+
+        // Clear previous notifications
+        notificationContainer.innerHTML = "";
+
+        // Supplier Notification
+        if (supplierMessage) {
+            const supplierNotification = document.createElement("div");
+            supplierNotification.classList.add("notification", "supplier-low");
+            supplierNotification.innerHTML = `
+                <div class="message">
+                    <strong>Low Stock Alert:</strong> ${supplierMessage}
+                </div>
+                <div class="notification-time">${notificationTime}</div>
+                <button onclick="dismissNotification(this)">Dismiss</button>
+            `;
+            notificationContainer.appendChild(supplierNotification);
+        }
+
+        // Admin Notification
+        if (adminMessage) {
+            const adminNotification = document.createElement("div");
+            adminNotification.classList.add("notification", "admin-error");
+            adminNotification.innerHTML = `
+                <div class="message">
+                    <strong>System Error:</strong> ${adminMessage}
+                </div>
+                <div class="notification-time">${notificationTime}</div>
+                <button onclick="dismissNotification(this)">Dismiss</button>
+            `;
+            notificationContainer.appendChild(adminNotification);
+        }
+
+        // Warehouse Manager Notification
+        if (warehouseMessage) {
+            const warehouseNotification = document.createElement("div");
+            warehouseNotification.classList.add("notification", "warehouse-expiry");
+            warehouseNotification.innerHTML = `
+                <div class="message">
+                    <strong>Expiry Warning:</strong> ${warehouseMessage}
+                </div>
+                <div class="notification-time">${notificationTime}</div>
+                <button onclick="dismissNotification(this)">Dismiss</button>
+            `;
+            notificationContainer.appendChild(warehouseNotification);
+        }
+
+        // General Info Notification
+        if (infoMessage) {
+            const infoNotification = document.createElement("div");
+            infoNotification.classList.add("notification", "info");
+            infoNotification.innerHTML = `
+                <div class="message">
+                    <strong>New Feature:</strong> ${infoMessage}
+                </div>
+                <div class="notification-time">${notificationTime}</div>
+                <button onclick="dismissNotification(this)">Dismiss</button>
+            `;
+            notificationContainer.appendChild(infoNotification);
+        }
+    }
+
+    function dismissNotification(button) {
+        button.parentElement.style.display = 'none';
+    }
+</script>
+</body>
+</html>
