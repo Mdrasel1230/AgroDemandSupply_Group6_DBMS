@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: login.php");
+    header("Location: ../../index.php");
     exit();
 }
 include 'db_connect.php';
@@ -22,6 +22,7 @@ include 'db_connect.php';
     </header>
     <nav>
         <ul>
+            <li><a href="admin_dashboard.php">Home</a></li>
             <li><a href="product_info.php">Product Information</a></li>
             <li><a href="production_data.php">Historical Production Data</a></li>
             <li><a href="real_time_supply.php">Real-Time Supply Levels</a></li>

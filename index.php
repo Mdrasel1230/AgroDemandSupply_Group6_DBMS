@@ -12,7 +12,7 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-image: url('css/bg_picture.jpg'); /* Add agriculture background */
+            background-image: url('Rasel/css/bg_picture.jpg'); /* Add agriculture background */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
