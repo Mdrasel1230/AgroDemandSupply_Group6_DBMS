@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Tracking</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/common.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Styling for the form */
+        .form-container {
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ebdddd;
+            border-radius: 4px;
+            background-color: #f0f8ff;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Styling for the table */
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        /* Centering the page content */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        input:focus, select:focus {
+            background-color: #e0f7fa;
+            border-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Inventroy tracking</h1>
+</header>
+<nav>
+    <ul>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="warehouse.html">Warehouse</a></li>
+        <li><a href="supplier_information.html">Supplier Information</a></li>
+        <li><a href="order_management.html">Order Management</a></li>
+        <li><a href="inventory_tracking.html">Inventory Tracking</a></li>
+        <li><a href="notifications.html">Notifications</a></li>
+        <li><a href="analytics_reports.html">Analytics Reports</a></li>
+        <li><a href="logout.html">Logout</a></li>
+    </ul>
+</nav>
+    <main>
+    <div class="form-container" id="inventory-form">
+        <form id="inventory-form-element" onsubmit="submitForm(event)">
+            <div class="form-group">
+                <label for="product_name">Product Name:</label>
+                <select id="product_name" name="product_name">
+                    <option value="" disabled selected>Select Product Name</option>
+                    <option value="Rice">Rice</option>
+                    <option value="Wheat">Wheat</option>
+                    <option value="Potato">Potato</option>
+                    <option value="Tomato">Tomato</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity-in-stock">Quantity in Stock:</label>
+                <input type="number" id="quantity-in-stock" name="quantity-in-stock" required>
+            </div>
+            <div class="form-group">
+                <label for="min-stock-level">Minimum Stock Level:</label>
+                <input type="number" id="min-stock-level" name="min-stock-level" required>
+            </div>
+            <div class="form-group">
+                <label for="stock-status">Stock Status:</label>
+                <select id="stock-status" name="stock-status" required>
+                    <option value="low">Low</option>
+                    <option value="sufficient">Sufficient</option>
+                    <option value="critical">Critical</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="expiry-date">Expiry Date (if applicable):</label>
+                <input type="date" id="expiry-date" name="expiry-date">
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div id="inventory-table-container">
+        <table id="inventory-table">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity in Stock</th>
+                    <th>Minimum Stock Level</th>
+                    <th>Stock Status</th>
+                    <th>Expiry Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            const productName = document.getElementById("product_name").value;
+            const quantityInStock = document.getElementById("quantity-in-stock").value;
+            const minStockLevel = document.getElementById("min-stock-level").value;
+            const stockStatus = document.getElementById("stock-status").value;
+            const expiryDate = document.getElementById("expiry-date").value;
+
+            const tableBody = document.getElementById("inventory-table").getElementsByTagName("tbody")[0];
+            const newRow = tableBody.insertRow();
+
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            const cell3 = newRow.insertCell(2);
+            const cell4 = newRow.insertCell(3);
+            const cell5 = newRow.insertCell(4);
+
+            cell1.textContent = productName;
+            cell2.textContent = quantityInStock;
+            cell3.textContent = minStockLevel;
+            cell4.textContent = stockStatus;
+            cell5.textContent = expiryDate;
+            const actionCell = newRow.insertCell(5);
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.onclick = function () {
+                tableBody.deleteRow(newRow.rowIndex - 1);
+            };
+            actionCell.appendChild(deleteButton);
+
+            document.getElementById("inventory-form-element").reset();
+        }
+    </script>
+</body>
+</html>
