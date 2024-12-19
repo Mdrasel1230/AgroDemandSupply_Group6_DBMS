@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Report</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .analytics-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .card .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .card .button-container {
+            margin-top: 20px;
+        }
+
+        .card button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background-color: #45a049;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            overflow: auto;
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 700px;
+            font-size: 16px;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #4CAF50;
+        }
+
+        .modal-content p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .modal-content .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            cursor: pointer;
+        }
+
+        .modal-content .close:hover,
+        .modal-content .close:focus {
+            color: black;
+        }
+
+        .modal-content .close-btn {
+            background-color: #f44336; /* Red background */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .modal-content .close-btn:hover {
+            background-color: #e53935;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .input-form {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .input-form h2 {
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        .input-form input,
+        .input-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .input-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .input-form button:hover {
+            background-color: #45a049;
+        }
+
+        /* New notification style */
+        .notification {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 20px auto;
+            max-width: 500px;
+            text-align: center;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Analytics Report</h1>
+    
+</header>
+<nav>
+    <ul>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="warehouse.html">Warehouse</a></li>
+        <li><a href="supplier_information.html">Supplier Information</a></li>
+        <li><a href="order_management.html">Order Management</a></li>
+        <li><a href="inventory_tracking.html">Inventory Tracking</a></li>
+        <li><a href="notifications.html">Notifications</a></li>
+        <li><a href="analytics_reports.html">Analytics Reports</a></li>
+        <li><a href="logout.html">Logout</a></li>
+    </ul>
+</nav>
+    <main>
+
+    <div class="input-form">
+        <h2>Enter Analytics Data</h2>
+        <input type="number" id="sales-revenue" placeholder="Enter Sales Revenue ($)" />
+        <input type="number" id="stock-availability" placeholder="Enter Stock Availability (units)" />
+        <input type="text" id="top-performing-products" placeholder="Enter Top Performing Products (comma separated)" />
+        <input type="text" id="most-profitable-product" placeholder="Enter Most Profitable Product" />
+        <input type="text" id="market-demand-trend" placeholder="Enter Market Demand Trend" />
+        
+        <button onclick="updateAnalytics()">Update Analytics</button>
+    </div>
+
+    <div class="notification" id="updateNotification">Analytics Data Updated Successfully!</div>
+
+    <div class="analytics-container">
+        <!-- Sales Data Card -->
+        <div class="card" id="sales-card">
+            <h2>Total Sales for the Last Quarter</h2>
+            <p>Total revenue generated from sales of agricultural products in the last quarter.</p>
+            <div class="value" id="sales-revenue-value">$0</div>
+            <div class="button-container">
+                <button onclick="viewDetails('Sales Data')">View Details</button>
+            </div>
+        </div>
+
+        <!-- Stock Availability Card -->
+        <div class="card" id="stock-card">
+            <h2>Current Stock Availability</h2>
+            <p>Total number of products currently available in the warehouse.</p>
+            <div class="value" id="stock-availability-value">0 units</div>
+            <div class="button-container">
+                <button onclick="viewDetails('Stock Availability')">View Details</button>
+            </div>
+        </div>
+
+        <!-- Top Performing Products Card -->
+        <div class="card" id="products-card">
+            <h2>Top Performing Products</h2>
+            <p>Best-selling products over the past month.</p>
+            <div class="value" id="top-performing-products-value">Enter Products</div>
+            <div class="button-container">
+                <button onclick="viewDetails('Top Performing Products')">View Details</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Report Title</h2>
+            <p id="modalDescription"></p>
+            <button class="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle "View Details" button click
+        function viewDetails(reportType) {
+            let modalTitle = document.getElementById("modalTitle");
+            let modalDescription = document.getElementById("modalDescription");
+
+            var salesRevenue = document.getElementById('sales-revenue').value || '$0';
+            var stockAvailability = document.getElementById('stock-availability').value || '0 units';
+            var topProducts = document.getElementById('top-performing-products').value || 'Enter Products';
+            var mostProfitableProduct = getMostProfitableProduct();  // Call the dynamic function
+            var marketDemandTrend = getMarketDemandTrend();  // Call the dynamic function
+
+            // Dynamic content for each report type
+            if (reportType === 'Sales Data') {
+                modalTitle.textContent = "Sales Data - Detailed View";
+                modalDescription.innerHTML = `\
+                    <p><strong>Total Revenue:</strong> ${salesRevenue}</p>\
+                    <p><strong>Top Selling Products:</strong> ${topProducts}</p>\
+                    <p><strong>Revenue Growth (Compared to Last Quarter):</strong> ${calculateGrowth(salesRevenue)}</p>\
+                    <p><strong>Average Sale Price:</strong> ${calculateAvgSalePrice(salesRevenue)}</p>\
+                    <p><strong>Total Sales Transactions:</strong> ${calculateTransactions()}</p>\
+                `;
+            } else if (reportType === 'Stock Availability') {
+                modalTitle.textContent = "Stock Availability - Detailed View";
+                modalDescription.innerHTML = `\
+                    <p><strong>Total Stock:</strong> ${stockAvailability}</p>\
+                    <p><strong>Critical Stock Levels (Below Replenishment Threshold):</strong> ${getCriticalStockLevels()}</p>\
+                    <p><strong>Restock Schedule:</strong> ${getRestockSchedule()}</p>\
+                `;
+            } else if (reportType === 'Top Performing Products') {
+                modalTitle.textContent = "Top Performing Products - Detailed View";
+                modalDescription.innerHTML = `\
+                    <p><strong>Top Products:</strong> ${topProducts}</p>\
+                    <p><strong>Growth Percentage (Compared to Last Month):</strong> ${calculateGrowth(topProducts)}</p>\
+                    <p><strong>Most Profitable Product:</strong> ${mostProfitableProduct}</p>\
+                    <p><strong>Market Demand Trend:</strong> ${marketDemandTrend}</p>\
+                `;
+            }
+
+            document.getElementById("detailsModal").style.display = "block";
+        }
+
+        // Close the modal when the close button is clicked
+        function closeModal() {
+            document.getElementById("detailsModal").style.display = "none";
+        }
+
+        // Function to update the analytics cards based on user input
+        function updateAnalytics() {
+            var salesRevenue = document.getElementById('sales-revenue').value || '$0';
+            var stockAvailability = document.getElementById('stock-availability').value || '0 units';
+            var topProducts = document.getElementById('top-performing-products').value || 'Enter Products';
+
+            document.getElementById('sales-revenue-value').textContent = salesRevenue;
+            document.getElementById('stock-availability-value').textContent = stockAvailability;
+            document.getElementById('top-performing-products-value').textContent = topProducts;
+
+            // Display success notification
+            var notification = document.getElementById('updateNotification');
+            notification.style.display = 'block';
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        // Dummy functions for calculating values (you can implement them as per your needs)
+        function calculateGrowth(value) {
+            return prompt("Enter growth percentage for sales:", "5%");
+        }
+
+        function calculateAvgSalePrice(value) {
+            return prompt("Enter average sale price:", "$20");
+        }
+
+        function calculateTransactions() {
+            return prompt("Enter the number of transactions:", "500");
+        }
+
+        function getCriticalStockLevels() {
+            return prompt("Enter the number of Critical Stock Levels (Below Replenishment Threshold):", "Product B, Product C");
+        }
+
+        function getRestockSchedule() {
+            return prompt("Enter the number of Restock Schedule:", "Every 15 days");
+        }
+
+        function getMostProfitableProduct() {
+            return prompt("Enter Most Profitable Product:", "Product A");
+        }
+
+        function getMarketDemandTrend() {
+            return prompt("Enter Market Demand Trend:", "Increasing");
+        }
+    </script>
+</body>
+</html>
